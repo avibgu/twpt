@@ -1,0 +1,75 @@
+{
+	"entities":
+	{
+		"hashtags":
+		[
+			{"text":"WSOP","indices":[63,68]},
+			{"text":"POKER","indices":[69,75]}
+		],
+		
+		"user_mentions":[],
+		
+		"urls":[]
+	},
+	
+	"text":"Good Morning! Can't sleep~~Guess it's just not in the cards!\ue409\n\n#WSOP #POKER",
+	"place":null,
+	"in_reply_to_screen_name":null,
+	"truncated":false,
+	"in_reply_to_status_id_str":null,
+	"favorited":false,
+	"retweet_count":0,
+	"source":"\u003Ca href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\"\u003ETwitter for iPhone\u003C\/a\u003E",
+	"in_reply_to_user_id_str":null,
+	"id_str":"219432272930160640",
+	"coordinates":null,
+	"geo":null,
+	"contributors":null,
+	"created_at":"Sun Jul 01 14:08:25 +0000 2012",
+	"in_reply_to_user_id":null,
+	
+	"user":
+	{
+		"lang":"en",
+		"profile_background_image_url_https":"https:\/\/si0.twimg.com\/images\/themes\/theme11\/bg.gif",
+		"profile_sidebar_fill_color":"E5507E",
+		"screen_name":"angie_valencia",
+		"show_all_inline_media":false,
+		"listed_count":20,
+		"profile_sidebar_border_color":"CC3366",
+		"statuses_count":3854,
+		"following":null,
+		"description":"Partner in a men's custom clothing co.\/Style advisor. Love Life & Life loves me back\ue32d kids & Travel are my Loves & being a Scorpio is my downfall\ue056",
+		"default_profile":false,
+		"profile_use_background_image":true,
+		"id_str":"131861483",
+		"is_translator":false,
+		"profile_text_color":"362720",
+		"profile_image_url_https":"https:\/\/si0.twimg.com\/profile_images\/2224134914\/image_normal.jpg",
+		"profile_background_image_url":"http:\/\/a0.twimg.com\/images\/themes\/theme11\/bg.gif",
+		"time_zone":"Central Time (US & Canada)",
+		"created_at":"Sun Apr 11 15:23:53 +0000 2010",
+		"followers_count":673,
+		"profile_image_url":"http:\/\/a0.twimg.com\/profile_images\/2224134914\/image_normal.jpg",
+		"verified":false,
+		"profile_link_color":"B40B43",
+		"protected":false,
+		"url":"http:\/\/AngelaValencia.Com",
+		"default_profile_image":false,
+		"name":"Angela Valencia\ue333\ue332\ue333\ue332",
+		"contributors_enabled":false,
+		"geo_enabled":false,
+		"favourites_count":78,
+		"friends_count":494,
+		"profile_background_color":"FF6699",
+		"id":131861483,"follow_request_sent":null,
+		"notifications":null,
+		"profile_background_tile":true,
+		"utc_offset":-21600,
+		"location":"Chicago for the moment"
+	},
+	
+	"retweeted":false,
+	"id":219432272930160640,
+	"in_reply_to_status_id":null
+}
