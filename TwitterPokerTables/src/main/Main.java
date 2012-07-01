@@ -1,81 +1,62 @@
 package main;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.scribe.builder.ServiceBuilder;
+import org.scribe.builder.api.TwitterApi;
+import org.scribe.model.OAuthRequest;
+import org.scribe.model.Response;
+import org.scribe.model.Token;
+import org.scribe.model.Verb;
+import org.scribe.oauth.OAuthService;
+
+import data.Tweet;
 
 public class Main {
 
-	/**
-	 * @param args
-	 * @throws Exception
-	 */
+	private static final String URL = "https://stream.twitter.com/1/statuses/filter.json";
+
+	private static final String apiKey = "cCXiLMMDa2gamP8YaUQcA";
+	private static final String apiSecret = "B83alGdX1HbEDKVIhLebXW02TXB3H87HGAEb4dZNZc";
+
+	private static final String token = "621835421-8KrKWswTS8RPYoAF2YhYagdLPqursnKadohkUinE";
+	private static final String tokenSecret = "r1rLrgRfJ0taKJGh8vTrK2FXNDNMRb19jNr8DKtMSZ0";
+
 	public static void main(String[] args) throws Exception {
 
-		URL url = new URL("https://stream.twitter.com/1/statuses/filter.json");
+		OAuthService service = new ServiceBuilder().provider(TwitterApi.class)
+				.apiKey(apiKey).apiSecret(apiSecret).build();
 
-		HttpURLConnection httpc = (HttpURLConnection) url.openConnection();
+		OAuthRequest request = new OAuthRequest(Verb.POST, URL);
 
-		String key = "Authorization";
+		request.addBodyParameter("track", "poker");
 
-		String value = "OAuth " +
-				"oauth_consumer_key=\"cCXiLMMDa2gamP8YaUQcA\", " +
-				"oauth_nonce=\"6646233af88377b936cc39aaedf8b074\", " +
-				"oauth_signature=\"%2Fuyh7Mg6Twq9q0YcUMFooe3Im%2Bw%3D\", " +
-				"oauth_signature_method=\"HMAC-SHA1\", " +
-				"oauth_timestamp=\"1341098398\", " +
-				"oauth_token=\"621835421-W4EoWQw0SL2jEaQnlne2dQltBZdNZIOVgs4Ak8oG\", " +
-				"oauth_version=\"1.0\"";
+		Token t = new Token(token, tokenSecret);
 
-		httpc.addRequestProperty(key, value);
+		service.signRequest(t, request);
 
-		httpc.setRequestMethod("POST");
+		Response response = request.send();
 
-		httpc.setDoOutput(true);
+		JSONTokener jsonTokener = new JSONTokener(new InputStreamReader(
+				response.getStream(), "UTF-8"));
 
-		// write
+		while (true) {
 
-		OutputStreamWriter wr = new OutputStreamWriter(httpc.getOutputStream());
+			try {
+				
+				JSONObject jsonObject = new JSONObject(jsonTokener);
+				
+				System.out.println(new Tweet(jsonObject));
+			}
 
-		wr.write("track=wsop");
-		wr.flush();
+			catch (JSONException ex) {
+				throw new IOException("Got JSONException: " + ex.getMessage());
+			}
+		}
 
-		// read
-
-		BufferedReader input = new BufferedReader(new InputStreamReader(
-				httpc.getInputStream()));
-
-		String inputLine = null;
-
-		while ((inputLine = input.readLine()) != null)
-			System.out.println(inputLine);
-
-		input.close();
-
-		httpc.disconnect();
-
-		// XStream xstream = new XStream(new JettisonMappedXmlDriver());
-		// xstream.alias("product", Product.class);
-		// Product product = (Product)xstream.fromXML(json);
-		// System.out.println(product.getName());
-
-//		JSONTokener jsonTokener = new JSONTokener(new InputStreamReader(is,
-//				"UTF-8"));
-//		
-//		while (true) {
-//			try {
-//				JSONObject jsonObject = new JSONObject(jsonTokener);
-//				System.out.println("Got " + jsonObject);
-//			} catch (JSONException ex) {
-//				throw new IOException("Got JSONException: " + ex.getMessage());
-//			}
-//		}
 	}
 }
