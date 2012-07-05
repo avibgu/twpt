@@ -50,7 +50,7 @@ public class Main {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		while (i++ < 5) {
+		while (i++ < 2) {
 
 			try {
 				
