@@ -47,4 +47,15 @@ public class Entities {
 		
 		// TODO: should change screen_name to name?..
 	}
+	
+	@Override
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("\n\tHashtags: " + mHashtags);
+		sb.append("n\tUser Mentions: " + mUserMentions);
+		
+		return sb.toString();
+	}
 }
