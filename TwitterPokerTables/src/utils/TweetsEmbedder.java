@@ -11,12 +11,12 @@ import org.json.JSONTokener;
 
 public class TweetsEmbedder {
 
-	public static String SCRIPT = "<script src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>";
+	public static String SCRIPT = "<script src=\"http://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>";
 
 	public static String getEmbedCode(String pId) throws Exception {
 
 		URL url = new URL(" https://api.twitter.com/1/statuses/oembed.json?id="
-				+ pId + "omit_script=true");
+				+ pId + "&omit_script=true&align=center");
 
 		HttpURLConnection httpc = (HttpURLConnection) url.openConnection();
 
