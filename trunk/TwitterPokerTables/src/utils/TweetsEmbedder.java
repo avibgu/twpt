@@ -36,8 +36,6 @@ public class TweetsEmbedder {
 
 			JSONObject jsonObject = new JSONObject(jsonTokener);
 
-			System.out.println(jsonObject);
-
 			embeddedCode = jsonObject.getString("html");
 		}
 
