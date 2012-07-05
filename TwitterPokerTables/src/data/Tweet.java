@@ -3,6 +3,8 @@ package data;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.TweetsEmbedder;
+
 public class Tweet {
 
 	protected String mId;
@@ -10,6 +12,7 @@ public class Tweet {
 	protected User mUser;
 	protected Entities mEntities;
 	protected Place mPlace;
+	protected String mEmbed;
 	
 	public Tweet(JSONObject pJsonObject) {
 
@@ -32,6 +35,10 @@ public class Tweet {
 		try {
 			mPlace = new Place(pJsonObject.getJSONObject("place"));
 		}catch (JSONException e) {}
+		
+		try {
+			mEmbed = TweetsEmbedder.getEmbedCode(mId);
+		}catch (Exception e) {}
 	}
 	
 	@Override
@@ -47,5 +54,9 @@ public class Tweet {
 		sb.append("\n");
 		
 		return sb.toString();
+	}
+	
+	public String getHTML() {		
+		return mEmbed;
 	}
 }

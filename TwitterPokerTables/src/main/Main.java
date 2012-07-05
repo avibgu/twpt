@@ -14,6 +14,8 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
+import utils.HTMLCreator;
+
 import data.Tweet;
 
 public class Main {
@@ -33,7 +35,7 @@ public class Main {
 
 		OAuthRequest request = new OAuthRequest(Verb.POST, URL);
 
-		request.addBodyParameter("track", "poker");
+		request.addBodyParameter("track", "wsop");
 
 		Token t = new Token(token, tokenSecret);
 
@@ -44,19 +46,24 @@ public class Main {
 		JSONTokener jsonTokener = new JSONTokener(new InputStreamReader(
 				response.getStream(), "UTF-8"));
 
-		while (true) {
+		int i = 0;
+		
+		StringBuilder sb = new StringBuilder();
+		
+		while (i++ < 5) {
 
 			try {
 				
 				JSONObject jsonObject = new JSONObject(jsonTokener);
 				
-				System.out.println(new Tweet(jsonObject));
+				sb.append(new Tweet(jsonObject).getHTML() + "\n");
 			}
 
 			catch (JSONException ex) {
 				throw new IOException("Got JSONException: " + ex.getMessage());
 			}
 		}
-
+		
+		System.out.println(HTMLCreator.createHTML(sb));
 	}
 }

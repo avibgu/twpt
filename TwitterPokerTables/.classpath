@@ -36,5 +36,6 @@
 	<classpathentry kind="lib" path="lib/twitter-api-me/kxml2-min-2.3.0.jar"/>
 	<classpathentry kind="lib" path="lib/twitter-api-me/twitter_api_me-1.8.3.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Scribe"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
